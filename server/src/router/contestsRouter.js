@@ -4,6 +4,7 @@ const checkToken = require('../middlewares/checkToken');
 const upload = require('../utils/fileUpload');
 const validators = require('../middlewares/validators');
 const userController = require('../controllers/userController');
+const contestController = require('../controllers/contestController');
 
 const contestsRouter = Router();
 
@@ -16,5 +17,14 @@ contestsRouter.post(
   validators.validateContestCreation,
   userController.payment
 );
+
+contestsRouter.get(
+  '/:id',
+  checkToken.checkToken,
+  basicMiddlewares.canGetContest,
+  contestController.getContestById
+);
+
+contestsRouter.get('/');
 
 module.exports = contestsRouter;
