@@ -10,7 +10,6 @@ const contestsRouter = Router();
 
 contestsRouter.post(
   '/',
-  checkToken.checkToken,
   basicMiddlewares.onlyForCustomer,
   upload.uploadContestFiles,
   basicMiddlewares.parseBody,
@@ -18,15 +17,10 @@ contestsRouter.post(
   userController.payment
 );
 
-contestsRouter.get(
-  '/byCustomer',
-  checkToken.checkToken,
-  contestController.getCustomersContests
-);
+contestsRouter.get('/byCustomer', contestController.getCustomersContests);
 
 contestsRouter.get(
   '/:id',
-  checkToken.checkToken,
   basicMiddlewares.canGetContest,
   contestController.getContestById
 );
