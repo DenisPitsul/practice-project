@@ -38,11 +38,11 @@ router.post(
 //   userController.payment
 // );
 
-router.post(
-  '/getCustomersContests',
-  checkToken.checkToken,
-  contestController.getCustomersContests
-);
+// router.post(
+//   '/getCustomersContests',
+//   checkToken.checkToken,
+//   contestController.getCustomersContests
+// );
 
 // router.get(
 //   '/getContestById',
